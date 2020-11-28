@@ -6,7 +6,7 @@ before install:
   - docker buidl -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run tsobrien-stl/react-test npm test -- --coverage
+  - docker run -e CI=true USERNAME/react-test npm test
 
 after_success:
   - docker build -t tsobrien-stl/multi-client ./client
