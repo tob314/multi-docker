@@ -3,7 +3,7 @@ services:
   - docker
 
 before install: 
-  - docker buidl -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
   - docker run -e CI=true tobrien6115/react-test npm test
