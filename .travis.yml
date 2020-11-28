@@ -6,7 +6,7 @@ before install:
   - docker buidl -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run -e CI=true USERNAME/react-test npm test
+  - docker run -e CI=true tobrien6115/react-test npm test
 
 after_success:
   - docker build -t tsobrien-stl/multi-client ./client
@@ -21,4 +21,3 @@ after_success:
   - docker push tsobrien-stl/multi-nginx
   - docker push tsobrien-stl/multi-server
   - docker push tsobrien-stl/multi-worker
-  
