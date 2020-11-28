@@ -1,0 +1,23 @@
+sudo: required
+services: 
+  - docker
+
+before install: 
+  - docker buidl -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
+
+script: 
+  - docker run tsobrien-stl/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t tsobrien-stl/multi-client ./client
+  - docker build -t tsobrien-stl/multi-nginx ./nginx
+  - docker build -t tsobrien-stl/multi-server ./server 
+  - docker build -t tsobrien-stl/multi-worker ./worker 
+
+  -echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+
+  #push to docker hub
+  - docker push tsobrien-stl/multi-client
+  - docker push tsobrien-stl/multi-nginx
+  - docker push tsobrien-stl/multi-server
+  - docker push tsobrien-stl/multi-worker
