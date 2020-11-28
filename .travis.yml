@@ -21,3 +21,4 @@ after_success:
   - docker push tsobrien-stl/multi-nginx
   - docker push tsobrien-stl/multi-server
   - docker push tsobrien-stl/multi-worker
+  
