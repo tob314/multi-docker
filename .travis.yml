@@ -15,7 +15,7 @@ after_success:
   - docker build -t tsobrien-stl/multi-server ./server 
   - docker build -t tsobrien-stl/multi-worker ./worker 
 
-  -echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
 
   #push to docker hub
   - docker push tsobrien-stl/multi-client
