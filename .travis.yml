@@ -17,7 +17,7 @@ after_success:
 
   - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
 
-  #push to docker hub
+  #push to docker hub registry
   - docker push tsobrien-stl/multi-client
   - docker push tsobrien-stl/multi-nginx
   - docker push tsobrien-stl/multi-server
