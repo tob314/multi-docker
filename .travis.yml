@@ -4,21 +4,21 @@ services:
   - docker
 
 before_install: 
-  - docker build -t tsobrien-stl/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t tobrien6115/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run -e CI=true tsobrien-stl/react-test npm test
+  - docker run -e CI=true tobrien6115/react-test npm test
 
 after_success:
-  - docker build -t tsobrien-stl/multi-client ./client
-  - docker build -t tsobrien-stl/multi-nginx ./nginx
-  - docker build -t tsobrien-stl/multi-server ./server 
-  - docker build -t tsobrien-stl/multi-worker ./worker 
+  - docker build -t tobrien6115/multi-client ./client
+  - docker build -t tobrien6115/multi-nginx ./nginx
+  - docker build -t tobrien6115/multi-server ./server 
+  - docker build -t tobrien6115/multi-worker ./worker 
 
   - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
 
   #push to docker hub registry
-  - docker push tsobrien-stl/multi-client
-  - docker push tsobrien-stl/multi-nginx
-  - docker push tsobrien-stl/multi-server
-  - docker push tsobrien-stl/multi-worker
+  - docker push tobrien6115/multi-client
+  - docker push tobrien6115/multi-nginx
+  - docker push tobrien6115/multi-server
+  - docker push tobrien6115/multi-worker
